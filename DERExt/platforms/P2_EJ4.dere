@@ -1,0 +1,36 @@
+<DERExt>
+ <Entity isAssociative="0" name="dato_institucion" x="268" y="-126" width="100" subtype="0">
+  <Simple optionSQL="1" sk="0" name="responsable" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="cuidador_especial" cant1="20" cant2="0" cant3="2" null="1" mult="0" parent="" pk="0" type="integer"/>
+ </Entity>
+ <Entity isAssociative="0" name="institucion" x="17" y="15" width="75" subtype="0">
+  <Simple optionSQL="1" sk="0" name="id_institucion" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="1" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="pais" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="region" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="ciudad" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+ </Entity>
+ <Entity isAssociative="0" name="historia_clinica" x="-218" y="-147" width="100" subtype="0">
+  <Simple optionSQL="1" sk="0" name="id_enfermedad" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="1" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="nombre_enfermedad_act" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="enfermedad_anterior" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+ </Entity>
+ <Entity isAssociative="0" name="familia" x="320" y="-238" width="55" subtype="0">
+  <Simple optionSQL="1" sk="0" name="id_familia" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="1" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="nombre" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="apellido" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="parentesco" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+ </Entity>
+ <Entity isAssociative="0" name="niño" x="26" y="-237" width="40" subtype="0">
+  <Simple optionSQL="1" sk="0" name="id_niño" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="1" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="nombre_padre" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Simple optionSQL="1" sk="0" name="nombre_madre" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="" pk="0" type="integer"/>
+  <Compound optionSQL="1" sk="0" name="nacio" null="0" mult="0" parent="" pk="0" amount="2">
+   <Simple optionSQL="1" sk="0" name="fecha" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="nacio" pk="0" type="integer"/>
+   <Simple optionSQL="1" sk="0" name="lugar" cant1="20" cant2="0" cant3="2" null="0" mult="0" parent="nacio" pk="0" type="integer"/>
+  </Compound>
+ </Entity>
+ <RBinary match1="simple" onUpdate0="restrict" onDelete0="restrict" onDelete1="restrict" name="a_cargo" width="40" firstWeak="0" max0="1" name1="dato_institucion" dep="0" rolename="" y="16" match0="simple" x="298" min0="1" max1="1" onUpdate1="restrict" min1="1" name0="institucion"/>
+ <RBinary match1="simple" onUpdate0="restrict" onDelete0="restrict" onDelete1="restrict" name="se_encuentra" width="70" firstWeak="0" max0="N" name1="institucion" dep="0" rolename="" y="-69" match0="simple" x="52" min0="1" max1="1" onUpdate1="restrict" min1="1" name0="niño"/>
+ <RBinary match1="simple" onUpdate0="restrict" onDelete0="restrict" onDelete1="restrict" name="enfermedad" width="60" firstWeak="0" max0="N" name1="historia_clinica" dep="0" rolename="" y="-213" match0="simple" x="-124" min0="1" max1="1" onUpdate1="restrict" min1="0" name0="niño"/>
+ <RBinary match1="simple" onUpdate0="restrict" onDelete0="restrict" onDelete1="restrict" name="tiene" width="40" firstWeak="0" max0="1" name1="familia" dep="0" rolename="" y="-225" match0="simple" x="214" min0="1" max1="1" onUpdate1="restrict" min1="0" name0="niño"/>
+</DERExt>

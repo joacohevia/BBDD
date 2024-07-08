@@ -1,0 +1,11 @@
+<DERExt>
+ <Entity isAssociative="0" name="deporte" width="55" y="78" x="-134" subtype="0">
+  <Simple cant1="20" optionSQL="1" pk="1" name="id" mult="0" parent="" cant2="0" cant3="2" type="integer" sk="0" null="0"/>
+  <Simple cant1="20" optionSQL="1" pk="0" name="nombre_depor" mult="0" parent="" cant2="0" cant3="2" type="integer" sk="0" null="0"/>
+ </Entity>
+ <Entity isAssociative="0" name="alumno" width="50" y="-87" x="-83" subtype="0">
+  <Simple cant1="20" optionSQL="1" pk="1" name="id" mult="0" parent="" cant2="0" cant3="2" type="integer" sk="0" null="0"/>
+  <Simple cant1="20" optionSQL="1" pk="0" name="nombre" mult="0" parent="" cant2="0" cant3="2" type="integer" sk="0" null="0"/>
+ </Entity>
+ <RBinary onDelete1="restrict" name1="alumno" onUpdate1="restrict" firstWeak="0" max1="N" min0="1" dep="0" x="-176" match0="simple" rolename="" name0="deporte" y="0" width="40" onUpdate0="restrict" min1="0" name="tiene" match1="simple" max0="N" onDelete0="restrict"/>
+</DERExt>

@@ -1,0 +1,42 @@
+<DERExt>
+ <Entity name="fabricante" subtype="0" isAssociative="0" x="-67" y="164" width="70">
+  <Simple cant1="20" null="0" pk="1" cant2="0" cant3="2" name="id_fabricante" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="nombre" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="precio" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Compound null="0" pk="0" name="direccion" optionSQL="1" amount="2" parent="" sk="0" mult="0">
+   <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="calle" optionSQL="1" parent="direccion" type="integer" sk="0" mult="0"/>
+   <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="numero" optionSQL="1" parent="direccion" type="integer" sk="0" mult="0"/>
+  </Compound>
+ </Entity>
+ <Entity name="departamento" subtype="0" isAssociative="0" x="-212" y="-145" width="80">
+  <Simple cant1="20" null="0" pk="1" cant2="0" cant3="2" name="nombre" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="jefe_depto" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+ </Entity>
+ <Entity name="empleados" subtype="0" isAssociative="0" x="136" y="-140" width="65">
+  <Simple cant1="20" null="0" pk="1" cant2="0" cant3="2" name="id_empleado" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="id_nombre_depto" optionSQL="1" parent="" type="integer" sk="1" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="nombre" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="apellido" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Compound null="0" pk="0" name="direccion" optionSQL="1" amount="4" parent="" sk="0" mult="0">
+   <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="calle" optionSQL="1" parent="direccion" type="integer" sk="0" mult="0"/>
+   <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="puerta" optionSQL="1" parent="direccion" type="integer" sk="0" mult="0"/>
+   <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="piso" optionSQL="1" parent="direccion" type="integer" sk="0" mult="0"/>
+   <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="ciudad" optionSQL="1" parent="direccion" type="integer" sk="0" mult="0"/>
+  </Compound>
+ </Entity>
+ <Entity name="productos" subtype="0" isAssociative="0" x="-142" y="-12" width="65">
+  <Simple cant1="20" null="0" pk="1" cant2="0" cant3="2" name="id_fabricante_fk" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="id_almacen_fk" optionSQL="1" parent="" type="integer" sk="1" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="nombre" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="fabricante" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+  <Simple cant1="20" null="0" pk="0" cant2="0" cant3="2" name="precio" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+ </Entity>
+ <Entity name="almacen" subtype="0" isAssociative="0" x="-277" y="176" width="55">
+  <Simple cant1="20" null="0" pk="1" cant2="0" cant3="2" name="id_almacen" optionSQL="1" parent="" type="integer" sk="0" mult="0"/>
+ </Entity>
+ <RBinary x="-10" onDelete1="restrict" min0="1" name="tiene" onUpdate0="restrict" onUpdate1="restrict" match1="simple" max1="1" name0="empleados" match0="simple" width="40" dep="0" rolename="" name1="departamento" max0="N" min1="1" firstWeak="0" y="-130" onDelete0="restrict"/>
+ <RBinary x="-211" onDelete1="restrict" min0="0" name="vende" onUpdate0="restrict" onUpdate1="restrict" match1="simple" max1="1" name0="productos" match0="simple" width="40" dep="0" rolename="" name1="departamento" max0="1" min1="1" firstWeak="0" y="-38" onDelete0="restrict"/>
+ <RBinary x="-86" onDelete1="restrict" min0="1" name="provee" onUpdate0="restrict" onUpdate1="restrict" match1="simple" max1="N" name0="fabricante" match0="simple" width="40" dep="0" rolename="" name1="productos" max0="1" min1="1" firstWeak="0" y="109" onDelete0="restrict"/>
+ <RBinary x="-207" onDelete1="restrict" min0="1" name="almacena" onUpdate0="restrict" onUpdate1="restrict" match1="simple" max1="N" name0="almacen" match0="simple" width="50" dep="0" rolename="" name1="productos" max0="1" min1="1" firstWeak="0" y="111" onDelete0="restrict"/>
+ <RBinary x="-115" onDelete1="restrict" min0="0" name="suministra" onUpdate0="restrict" onUpdate1="restrict" match1="simple" max1="N" name0="fabricante" match0="simple" width="60" dep="0" rolename="" name1="almacen" max0="1" min1="1" firstWeak="0" y="288" onDelete0="restrict"/>
+</DERExt>
