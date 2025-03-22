@@ -1,0 +1,33 @@
+<DERExt>
+ <Entity subtype="0" x="43" name="camiones" y="-12" width="60" isAssociative="0">
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="patente" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="mod" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="tipo" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="potencia" cant1="20" mult="0" type="integer" cant3="2"/>
+ </Entity>
+ <Entity subtype="0" x="-376" name="camioneros" y="-23" width="70" isAssociative="0">
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="DNI" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="nombre" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="telefono" cant1="20" mult="1" type="integer" cant3="2"/>
+  <Compound optionSQL="1" pk="0" parent="" sk="0" amount="2" null="0" name="direccion" mult="0">
+   <Simple optionSQL="1" pk="0" parent="direccion" sk="0" cant2="0" null="0" name="calle" cant1="20" mult="0" type="integer" cant3="2"/>
+  </Compound>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="salario" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="ciudad" cant1="20" mult="0" type="integer" cant3="2"/>
+ </Entity>
+ <Entity subtype="0" x="72" name="ciudad" y="-180" width="50" isAssociative="0">
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="id" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="nombre" cant1="20" mult="0" type="integer" cant3="2"/>
+ </Entity>
+ <Entity subtype="0" x="-218" name="paquetes" y="-174" width="60" isAssociative="0">
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="id" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="descrip" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="destinario" cant1="20" mult="0" type="integer" cant3="2"/>
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="direDestic" cant1="20" mult="0" type="integer" cant3="2"/>
+ </Entity>
+ <RBinary onUpdate1="restrict" firstWeak="0" name1="camioneros" onDelete1="restrict" match0="simple" name="conduce" max0="N" width="40" min0="1" dep="0" y="-16" name0="camiones" x="-128" onDelete0="restrict" rolename="" onUpdate0="restrict" min1="1" max1="N" match1="simple">
+  <Simple optionSQL="1" pk="0" parent="" sk="0" cant2="0" null="0" name="fecha" cant1="20" mult="0" type="integer" cant3="2"/>
+ </RBinary>
+ <RBinary onUpdate1="restrict" firstWeak="0" name1="ciudad" onDelete1="restrict" match0="simple" name="llegan" max0="N" width="40" min0="1" dep="0" y="-152" name0="paquetes" x="-25" onDelete0="restrict" rolename="" onUpdate0="restrict" min1="1" max1="1" match1="simple"/>
+ <RBinary onUpdate1="restrict" firstWeak="0" name1="paquetes" onDelete1="restrict" match0="simple" name="distribuye" max0="1" width="60" min0="1" dep="0" y="-147" name0="camioneros" x="-371" onDelete0="restrict" rolename="" onUpdate0="restrict" min1="1" max1="N" match1="simple"/>
+</DERExt>

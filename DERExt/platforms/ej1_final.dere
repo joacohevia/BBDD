@@ -1,0 +1,37 @@
+<DERExt>
+ <Entity x="-115" y="105" width="65" isAssociative="0" subtype="0" name="productos">
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="1" sk="0" name="id" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="descripcion" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="precio" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="precioVenta" optionSQL="1" null="0"/>
+ </Entity>
+ <Entity x="-53" y="-117" width="60" isAssociative="0" subtype="0" name="facturas">
+  <Compound amount="2" parent="" mult="0" pk="1" sk="0" name="id" optionSQL="1" null="0">
+   <Simple cant1="20" type="integer" parent="id" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="tipo" optionSQL="1" null="0"/>
+   <Simple cant1="20" type="integer" parent="id" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="num" optionSQL="1" null="0"/>
+  </Compound>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="fecha" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="importe" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="cliente" optionSQL="1" null="0"/>
+ </Entity>
+ <Entity x="-454" y="-109" width="55" isAssociative="0" subtype="0" name="cliente">
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="1" sk="0" name="id" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="nombre" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="apellido" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="fechaNAc" optionSQL="1" null="0"/>
+  <Compound amount="2" parent="" mult="0" pk="0" sk="0" name="direccion" optionSQL="1" null="0">
+   <Simple cant1="20" type="integer" parent="direccion" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="calle" optionSQL="1" null="0"/>
+   <Simple cant1="20" type="integer" parent="direccion" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="numero" optionSQL="1" null="0"/>
+  </Compound>
+  <Compound amount="2" parent="" mult="0" pk="0" sk="0" name="telefono" optionSQL="1" null="0">
+   <Simple cant1="20" type="integer" parent="telefono" cant2="0" mult="1" cant3="2" pk="0" sk="0" name="celular" optionSQL="1" null="0"/>
+   <Simple cant1="20" type="integer" parent="telefono" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="fijo" optionSQL="1" null="1"/>
+  </Compound>
+ </Entity>
+ <RBinary name1="productos" onDelete0="restrict" min1="1" rolename="" onUpdate0="restrict" onUpdate1="restrict" y="14" match0="simple" name="detalle" min0="1" onDelete1="restrict" dep="0" width="40" x="-18.5" firstWeak="0" max1="N" name0="facturas" match1="simple" max0="N">
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="cantidad" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="precioUnitario" optionSQL="1" null="0"/>
+  <Simple cant1="20" type="integer" parent="" cant2="0" mult="0" cant3="2" pk="0" sk="0" name="subTotal" optionSQL="1" null="0"/>
+ </RBinary>
+ <RBinary name1="facturas" onDelete0="restrict" min1="1" rolename="" onUpdate0="restrict" onUpdate1="restrict" y="-93" match0="simple" name="tiene" min0="1" onDelete1="restrict" dep="0" width="40" x="-225" firstWeak="0" max1="N" name0="cliente" match1="simple" max0="N"/>
+</DERExt>

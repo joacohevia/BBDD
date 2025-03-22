@@ -2,6 +2,7 @@
   (RIR) si se desea que cada vez que se elimine un registro de la tabla
   PALABRA , también se eliminen los artículos
   que la referencian en la tabla CONTIENE. */
+
 ALTER TABLE p5p1e1_contiene
 DROP CONSTRAINT fk_p5p1e1_contiene_palabra; --elimino a restric anterior
 
@@ -11,7 +12,15 @@ FOREIGN KEY (idioma, cod_palabra)
 REFERENCES P5P1E1_PALABRA (idioma, cod_palabra)
 ON DELETE CASCADE;
 
+select * from p5p1e1_palabra;
+select * from p5p1e1_contiene;
+select * from p5p1e1_articulo;
+
+drop TABLE p5p1e1_articulo;
+delete from p5p1e1_contiene where;
+delete  from p5p1e1_articulo where id_articulo=1;
 delete from p5p1e1_palabra where cod_palabra=1;
+
 
 insert into p5p1e1_palabra
 (idioma, cod_palabra, descripcion)
@@ -41,6 +50,9 @@ add constraint fk_contiene_palabra
 foreign key (cod_palabra,idioma)
 references p5p1e1_palabra (cod_palabra,idioma)
 on delete restrict ;
+
+ALTER TABLE p5p1e1_contiene
+DROP CONSTRAINT fk_contiene_palabra; --elimino a restric anterior
 
 
 -- Table: TP5_P1_EJ2_AUSPICIO

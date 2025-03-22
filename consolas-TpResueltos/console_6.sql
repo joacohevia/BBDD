@@ -44,6 +44,21 @@ WHERE (id_departamento,id_distribuidor) NOT IN
               (SELECT t.id_tarea
                 FROM tarea t
                 WHERE (t.sueldo_maximo - t.sueldo_minimo) <= (t.sueldo_maximo * 0.1)));
+--utilizando EXISTS
+SELECT *
+FROM unc_esq_peliculas.departamento d
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM unc_esq_peliculas.empleado p
+    WHERE p.id_departamento = d.id_departamento
+      AND p.id_distribuidor = d.id_distribuidor
+      AND EXISTS (
+          SELECT 1
+          FROM unc_esq_peliculas.tarea t
+          WHERE t.id_tarea = p.id_tarea
+            AND (t.sueldo_maximo - t.sueldo_minimo) <= (t.sueldo_maximo * 0.1)
+      )
+);
 
 set search_path = unc_esq_peliculas;
 
@@ -67,6 +82,11 @@ WHERE p.codigo_pelicula IN(
             )
         )
     )
+WHERE NOT EXISTS(
+SELECT 1
+FROM unc_esq_peliculas.nacional n
+WHERE d.tipo ='N')
+
 --1.5. Determinar los jefes que poseen personal a cargo y cuyos departamentos (los del
 --jefe) se encuentren en la Argentina.
 SELECT DISTINCT e.nombre,e.apellido,e.id_jefe,e.id_empleado
@@ -128,23 +148,6 @@ WHERE extract(year FROM fecha_nacimiento) <= 2005
 group by c.nombre_ciudad,c.id_pais
 HAVING count(e.id_empleado) >=30
 
-SELECT c.nombre_ciudad
-FROM ciudad c
-WHERE c.id_ciudad IN
-    (SELECT d.id_ciudad
-     FROM departamento d
-     WHERE (d.id_distribuidor,d.id_departamento) IN
-    (SELECT e.id_distribuidor,e.id_departamento
-    FROM empleado e
-    WHERE e.id_tarea IN
-    (SELECT t.id_tarea
-     FROM tarea t
-     WHERE extract(year FROM fecha_nacimiento) <= 2005
-     group by c.nombre_ciudad
-     HAVING count(e.id_empleado) >=30
-    )
-    )
-    );
 
 /*Muestre, para cada institución, su nombre y la cantidad de voluntarios que realizan
 aportes. Ordene el resultado por nombre de institución. V */
@@ -230,3 +233,20 @@ distribuidor mayorista. */
 delete from distribuidor_nac n
 where n.id_distrib_mayorista IS null;
 
+--1. ¿Cuántos distribuidores nacionales han realizado exactamente 10 entregas?
+
+SELECT COUNT(*) AS cantidad_distrib
+FROM unc_esq_peliculas.distribuidor d
+JOIN unc_esq_peliculas.entrega e
+ON (d.id_distribuidor = e.id_distribuidor)
+WHERE d.tipo = 'N'
+GROUP BY e.id_distribuidor
+HAVING COUNT(*) = 10;
+--2. Listar el/los distribuidor/es con la mayor cantidad de entregas realizadas, indicando cuál es dicha cantidad
+
+SELECT nombre, COUNT(g.id_distribuidor) AS cantidad
+FROM unc_esq_peliculas.distribuidor d
+JOIN unc_esq_peliculas.entrega g ON d.id_distribuidor = g.id_distribuidor
+GROUP BY d.id_distribuidor, nombre
+ORDER BY cantidad DESC
+LIMIT 1;

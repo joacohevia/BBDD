@@ -4,9 +4,11 @@ alter table p5p1e1_articulo
 add constraint ck_nacionalidad_especifica
 check ( nacionalidad IN('Argentina','Espaniol','Ingles','Aleman','Chilena'));
 
+
+
+
 --B. Para las fechas de publicaciones se debe considerar que sean fechas
 -- posteriores o iguales al 2010.
-
 alter table p5p1e1_articulo
 add constraint  ck_publicaciones_posteriores
 check ( extract(year from fecha_publicacion) >= 2010 );
